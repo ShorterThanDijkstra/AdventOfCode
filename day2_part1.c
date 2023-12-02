@@ -36,19 +36,11 @@ char *lex_num(int *num, char *line)
 
 bool starts_with(char *line, char *pattern)
 {
-    if (strlen(line) < strlen(pattern))
-    {
-        return false;
-    }
-    for (int i = 0; i < strlen(pattern); i++)
-    {
-        if (*(line + i) != *(pattern + i))
-        {
-            return false;
-        }
-    }
-    return true;
+    size_t lenpattern = strlen(pattern),
+           lenline = strlen(line);
+    return lenline < lenpattern ? false : memcmp(pattern, line, lenpattern) == 0;
 }
+
 char *lex_cube_set(char *line, int *blue, int *red, int *green)
 {
     while (!(*line == ';' || *line == '\n'))
