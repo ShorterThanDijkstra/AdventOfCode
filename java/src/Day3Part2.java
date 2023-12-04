@@ -44,11 +44,7 @@ public class Day3Part2 {
     private static int lexLine(String pre, String curr, String next, int lineNum) {
         int sum = 0;
         for (int i = 0; i < curr.length(); i++) {
-            if (i + 1 == 66 && lineNum == 139) {
-                System.out.println();
-            }
             if (isGear(pre, curr, next, i)) {
-
                 int ratio = gearRatio(pre, curr, next, i);
                 sum += ratio;
                 System.out.printf("line: %d, colum:%d, ration:%d\n", lineNum, i + 1, ratio);
@@ -105,7 +101,7 @@ public class Day3Part2 {
             while (start >= 0 && Character.isDigit(curr.charAt(start))) {
                 start -= 1;
             }
-            ratio *= lexNum(curr, start+1);
+            ratio *= lexNum(curr, start + 1);
         }
         if (i + 1 < curr.length() && Character.isDigit(curr.charAt(i + 1))) {
             ratio *= lexNum(curr, i + 1);
